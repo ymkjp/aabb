@@ -10,6 +10,17 @@ definitions:
     - string
   identity:
     "$ref": "/schemata/user#/definitions/id"
+  username:
+    description: user's name
+    example: smith
+    type:
+    - string
+  email:
+      description: user's email address
+      example: john.smith@example.com
+      format: email
+      type:
+      - string
   created_at:
     description: when user was created
     example: '2012-01-01T12:00:00Z'
@@ -29,9 +40,15 @@ links:
   method: POST
   rel: create
   schema:
-    properties: {}
+    properties: {
+      'username': { "$ref": "/schemata/user#/definitions/username" },
+      'email': { "$ref": "/schemata/user#/definitions/email" }
+    }
     type:
     - object
+    required:
+    - username
+    - email
   title: Create
 - description: Delete an existing user.
   href: "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}"
@@ -53,11 +70,18 @@ links:
   method: PATCH
   rel: update
   schema:
-    properties: {}
+    properties: {
+      'username': { "$ref": "/schemata/user#/definitions/username" },
+      'email': { "$ref": "/schemata/user#/definitions/email" }
+    }
     type:
     - object
   title: Update
 properties:
+  username:
+    "$ref": "/schemata/user#/definitions/username"
+  email:
+    "$ref": "/schemata/user#/definitions/email"
   created_at:
     "$ref": "/schemata/user#/definitions/created_at"
   id:

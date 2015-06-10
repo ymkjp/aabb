@@ -115,6 +115,21 @@
         "identity": {
           "$ref": "#/definitions/user/definitions/id"
         },
+        "username": {
+          "description": "user's name",
+          "example": "smith",
+          "type": [
+            "string"
+          ]
+        },
+        "email": {
+          "description": "user's email address",
+          "example": "john.smith@example.com",
+          "format": "email",
+          "type": [
+            "string"
+          ]
+        },
         "created_at": {
           "description": "when user was created",
           "example": "2012-01-01T12:00:00Z",
@@ -141,9 +156,19 @@
           "rel": "create",
           "schema": {
             "properties": {
+              "username": {
+                "$ref": "#/definitions/user/definitions/username"
+              },
+              "email": {
+                "$ref": "#/definitions/user/definitions/email"
+              }
             },
             "type": [
               "object"
+            ],
+            "required": [
+              "username",
+              "email"
             ]
           },
           "title": "Create"
@@ -176,6 +201,12 @@
           "rel": "update",
           "schema": {
             "properties": {
+              "username": {
+                "$ref": "#/definitions/user/definitions/username"
+              },
+              "email": {
+                "$ref": "#/definitions/user/definitions/email"
+              }
             },
             "type": [
               "object"
@@ -185,6 +216,12 @@
         }
       ],
       "properties": {
+        "username": {
+          "$ref": "#/definitions/user/definitions/username"
+        },
+        "email": {
+          "$ref": "#/definitions/user/definitions/email"
+        },
         "created_at": {
           "$ref": "#/definitions/user/definitions/created_at"
         },

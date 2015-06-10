@@ -154,6 +154,8 @@ FIXME
 ### Attributes
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
+| **username** | *string* | user's name | `"smith"` |
+| **email** | *email* | user's email address | `"john.smith@example.com"` |
 | **created_at** | *date-time* | when user was created | `"2012-01-01T12:00:00Z"` |
 | **id** | *uuid* | unique identifier of user | `"01234567-89ab-cdef-0123-456789abcdef"` |
 | **updated_at** | *date-time* | when user was updated | `"2012-01-01T12:00:00Z"` |
@@ -164,11 +166,23 @@ Create a new user.
 POST /users
 ```
 
+#### Required Parameters
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **username** | *string* | user's name | `"smith"` |
+| **email** | *email* | user's email address | `"john.smith@example.com"` |
+
+
 
 #### Curl Example
 ```bash
 $ curl -n -X POST https://api.hello.com/users \
   -H "Content-Type: application/json" \
+ \
+  -d '{
+  "username": "smith",
+  "email": "john.smith@example.com"
+}'
 
 ```
 
@@ -179,6 +193,8 @@ HTTP/1.1 201 Created
 ```
 ```json
 {
+  "username": "smith",
+  "email": "john.smith@example.com",
   "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "updated_at": "2012-01-01T12:00:00Z"
@@ -207,6 +223,8 @@ HTTP/1.1 200 OK
 ```
 ```json
 {
+  "username": "smith",
+  "email": "john.smith@example.com",
   "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "updated_at": "2012-01-01T12:00:00Z"
@@ -234,6 +252,8 @@ HTTP/1.1 200 OK
 ```
 ```json
 {
+  "username": "smith",
+  "email": "john.smith@example.com",
   "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "updated_at": "2012-01-01T12:00:00Z"
@@ -262,6 +282,8 @@ HTTP/1.1 200 OK
 ```json
 [
   {
+    "username": "smith",
+    "email": "john.smith@example.com",
     "created_at": "2012-01-01T12:00:00Z",
     "id": "01234567-89ab-cdef-0123-456789abcdef",
     "updated_at": "2012-01-01T12:00:00Z"
@@ -276,11 +298,22 @@ Update an existing user.
 PATCH /users/{user_id}
 ```
 
+#### Optional Parameters
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **username** | *string* | user's name | `"smith"` |
+| **email** | *email* | user's email address | `"john.smith@example.com"` |
+
 
 #### Curl Example
 ```bash
 $ curl -n -X PATCH https://api.hello.com/users/$USER_ID \
   -H "Content-Type: application/json" \
+ \
+  -d '{
+  "username": "smith",
+  "email": "john.smith@example.com"
+}'
 
 ```
 
@@ -291,6 +324,8 @@ HTTP/1.1 200 OK
 ```
 ```json
 {
+  "username": "smith",
+  "email": "john.smith@example.com",
   "created_at": "2012-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "updated_at": "2012-01-01T12:00:00Z"
